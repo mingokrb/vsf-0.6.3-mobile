@@ -375,7 +375,9 @@ class TitleState extends MusicBeatState
 		logo.antialiasing = ClientPrefs.globalAntialiasing;
 		// add(logo);
 
-		FlxTween.tween(logoBl, {y: logoBl.y + 10}, 0.6, {ease: FlxEase.quadInOut, type: PINGPONG});
+		FlxTween.tween(logoBl, {y: logoBl.y + 10}, 1, {ease: FlxEase.quadInOut, type: PINGPONG});
+		FlxTween.tween(logoBl, {angle: logoBl.angle - 0.5}, 0.05, {ease: FlxEase.linear});
+		FlxTween.tween(logoBl, {angle: logoBl.angle + 1}, 2.2, {ease: FlxEase.quadInOut, type: PINGPONG, startDelay: 0.1});
 		// FlxTween.tween(logo, {y: logoBl.y + 50}, 0.6, {ease: FlxEase.quadInOut, type: PINGPONG, startDelay: 0.1});
 
 		credGroup = new FlxGroup();
@@ -399,6 +401,22 @@ class TitleState extends MusicBeatState
 		ngSpr.updateHitbox();
 		ngSpr.screenCenter(X);
 		ngSpr.antialiasing = ClientPrefs.globalAntialiasing;
+
+		sfSpr = new FlxSprite(0, FlxG.height * 0.52).loadGraphic(Paths.image('serverfoda_logo'));
+		add(sfSpr);
+		sfSpr.visible = false;
+		sfSpr.setGraphicSize(Std.int(sfSpr.width * 0.8));
+		sfSpr.updateHitbox();
+		sfSpr.screenCenter(X);
+		sfSpr.antialiasing = false;
+
+		wegaSpr = new FlxSprite(0, 0).loadGraphic(Paths.image('wegascare'));
+		add(wegaSpr);
+		wegaSpr.visible = false;
+		wegaSpr.setGraphicSize(Std.int(wegaSpr.width / 0.5));
+		wegaSpr.updateHitbox();
+		wegaSpr.screenCenter();
+		wegaSpr.antialiasing = ClientPrefs.globalAntialiasing;
 
 		FlxTween.tween(credTextShit, {y: credTextShit.y + 20}, 2.9, {ease: FlxEase.quadInOut, type: PINGPONG});
 
