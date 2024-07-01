@@ -651,25 +651,25 @@ class TitleState extends MusicBeatState
 				case 2:
 					createCoolText(['mingokrb'], -50);
 				case 3:
-					addMoreText('Server Foda', 50);
+					addMoreText('Server Foda', -45);
 				// credTextShit.visible = true;
 				case 4:
-					addMoreText('present');
+					addMoreText('apresentam', -40);
+					sfSpr.visible = true;
 				// credTextShit.text += '\npresent...';
 				// credTextShit.addText();
 				case 5:
 					deleteCoolText();
+					sfSpr.visible = false;
 				// credTextShit.visible = false;
 				// credTextShit.text = 'In association \nwith';
 				// credTextShit.screenCenter();
 				case 6:
-					#if PSYCH_WATERMARKS
-					createCoolText(['Not associated', 'with'], -40);
-					#else
-					createCoolText(['In association', 'with'], -40);
-					#end
+					createCoolText(['Não associado'], -50);
+				case 7:
+					addMoreText('com', -45);
 				case 8:
-					addMoreText('newgrounds', -40);
+					addMoreText('Newgrounds', -40);
 					ngSpr.visible = true;
 				// credTextShit.text += '\nNewgrounds';
 				case 9:
@@ -680,10 +680,12 @@ class TitleState extends MusicBeatState
 				// credTextShit.text = 'Shoutouts Tom Fulp';
 				// credTextShit.screenCenter();
 				case 10:
-					createCoolText([curWacky[0]]);
+					createCoolText([curWacky[0]], -20);
 				// credTextShit.visible = true;
+				case 11:
+					addMoreText(curWacky[1], 2);
 				case 12:
-					addMoreText(curWacky[1]);
+					addMoreText(curWacky[2], 24);
 				// credTextShit.text += '\nlmao';
 				case 13:
 					deleteCoolText();
@@ -691,13 +693,13 @@ class TitleState extends MusicBeatState
 				// credTextShit.text = "Friday";
 				// credTextShit.screenCenter();
 				case 14:
-					addMoreText('Friday');
+					addMoreText('Vs', 20);
 				// credTextShit.visible = true;
 				case 15:
-					addMoreText('Night');
+					addMoreText('Server', 52);
 				// credTextShit.text += '\nNight';
 				case 16:
-					addMoreText('Funkin'); // credTextShit.text += '\nFunkin';
+					addMoreText('Foda', 84); // credTextShit.text += '\nFunkin';
 
 				case 17:
 					skipIntro();
@@ -722,8 +724,8 @@ class TitleState extends MusicBeatState
 				{
 					case 'RIVER':
 						sound = FlxG.sound.play(Paths.sound('JingleRiver'));
-					case 'SHUBS':
-						sound = FlxG.sound.play(Paths.sound('JingleShubs'));
+					case 'WEGA':
+						sound = FlxG.sound.play(Paths.sound('WegaScream'));
 					case 'SHADOW':
 						FlxG.sound.play(Paths.sound('JingleShadow'));
 					case 'BBPANZU':
@@ -731,6 +733,7 @@ class TitleState extends MusicBeatState
 
 					default: //Go back to normal ugly ass boring GF
 						remove(ngSpr);
+						remove(sfSpr);
 						remove(credGroup);
 						FlxG.camera.flash(FlxColor.WHITE, 2);
 						skippedIntro = true;
@@ -747,6 +750,7 @@ class TitleState extends MusicBeatState
 					new FlxTimer().start(3.2, function(tmr:FlxTimer)
 					{
 						remove(ngSpr);
+						remove(sfSpr);
 						remove(credGroup);
 						FlxG.camera.flash(FlxColor.WHITE, 0.6);
 						transitioning = false;
@@ -755,6 +759,7 @@ class TitleState extends MusicBeatState
 				else
 				{
 					remove(ngSpr);
+					remove(sfSpr);
 					remove(credGroup);
 					FlxG.camera.flash(FlxColor.WHITE, 3);
 					sound.onComplete = function() {
@@ -768,6 +773,7 @@ class TitleState extends MusicBeatState
 			else //Default! Edit this one!!
 			{
 				remove(ngSpr);
+				remove(sfSpr);
 				remove(credGroup);
 				FlxG.camera.flash(FlxColor.WHITE, 4);
 
