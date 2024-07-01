@@ -740,7 +740,7 @@ class TitleState extends MusicBeatState
 						playJingle = false;
 
 						FlxG.sound.playMusic(Paths.music('freakyMenu'), 0);
-						FlxG.sound.music.fadeIn(4, 0, 0.7);
+						//FlxG.sound.music.fadeIn(4, 0, 0.7);
 						return;
 				}
 
@@ -764,7 +764,7 @@ class TitleState extends MusicBeatState
 					FlxG.camera.flash(FlxColor.WHITE, 3);
 					sound.onComplete = function() {
 						FlxG.sound.playMusic(Paths.music('freakyMenu'), 0);
-						FlxG.sound.music.fadeIn(4, 0, 0.7);
+						//FlxG.sound.music.fadeIn(4, 0, 0.7);
 						transitioning = false;
 					};
 				}
